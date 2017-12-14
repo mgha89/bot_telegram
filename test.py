@@ -1,11 +1,10 @@
-import json
+import json 
 import requests
 import time
 import os
 import urllib
 
-# TOKEN = os.environ['TELEGRAM_TOKEN']
-TOKEN = "461816691:AAE-8nISKBJYAv5c70PBefb--d7NDrcR1Yw"
+TOKEN = os.environ['TELEGRAM_TOKEN']
 #some_api_token = os.environ['SOME_API_TOKEN']
 #TOKEN = "<token>"
 URL = "https://api.telegram.org/bot{}/".format(TOKEN)
@@ -30,12 +29,12 @@ def get_updates(offset=None):
     js = get_json_from_url(url)
     return js
 
-# def get_last_chat_id_and_text(updates):
-#     num_updates = len(updates["result"])
-#     last_update = num_updates - 1
-#     text = updates["result"][last_update]["message"]["text"]
-#     chat_id = updates["result"][last_update]["message"]["chat"]["id"]
-#     return (text, chat_id)
+def get_last_chat_id_and_text(updates):
+    num_updates = len(updates["result"])
+    last_update = num_updates - 1
+    text = updates["result"][last_update]["message"]["text"]
+    chat_id = updates["result"][last_update]["message"]["chat"]["id"]
+    return (text, chat_id)
 
 
 def send_message(text, chat_id):
